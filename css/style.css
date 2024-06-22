@@ -1,0 +1,9 @@
+textarea {
+  height: 600px;
+  width: 500px;
+}
+
+#result{
+  color: red;
+  font-weight: bold;
+}
