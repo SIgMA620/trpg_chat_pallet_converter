@@ -44,13 +44,39 @@ const DEFAULT_TECH_VAL = {
     "サバイバル": 10,
 };
 
+const DEFAULT_BATTLE_TECH_VAL = {
+    "近接戦闘【斧】": 15,
+    "近接戦闘【格闘】": 25,
+    "近接戦闘【絞殺紐】": 15,
+    "近接戦闘【チェンソー】": 10,
+    "近接戦闘【刀剣】": 20,
+    "近接戦闘【フレイル】": 10,
+    "近接戦闘【鞭】": 5,
+    "近接戦闘【槍】": 20,
+};
+
+const DEFAULT_GUN_TECH_VAL = {
+    "射撃【火炎放射器】": 10,
+    "射撃【拳銃】": 20,
+    "射撃【サブマシンガン】": 15,
+    "射撃【重火器】": 10,
+    "射撃【マシンガン】": 10,
+    "射撃【弓】": 15,
+    "射撃【ライフル/ショットガン】": 25,
+};
+
+const ALL_TECH_LIST = [DEFAULT_TECH_VAL, DEFAULT_BATTLE_TECH_VAL, DEFAULT_GUN_TECH_VAL];
+
 function convertStr(str) {
     let ret_str = str.replaceAll("CC", "1d100");
 
-    for (let key in DEFAULT_TECH_VAL) {
-        if (ret_str.indexOf(key) === -1) {
-            ret_str = ret_str + `1d100<=${DEFAULT_TECH_VAL[key]} 【${key}】\n`
+    for (let tech_list_index in ALL_TECH_LIST) {
+        for (let key in ALL_TECH_LIST[tech_list_index]) {
+            if (ret_str.indexOf(key) === -1) {
+                ret_str = ret_str + `1d100<=${ALL_TECH_LIST[tech_list_index][key]} 【${key}】\n`
+            }
         }
+        console.log(ALL_TECH_LIST[tech_list_index]);
     }
 
     return ret_str;
