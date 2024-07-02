@@ -82,12 +82,14 @@ function convertStr(str) {
     return ret_str;
 }
 $(function() {
-    $('.input_txt').on('blur', function() {
-        let str = $(this).val();
-        $(this).val(convertStr(str));
-        $(this).select();
+    $('#convert_button').on('click', function() {
+        let str =$('#input_txt').val();
+
+        let result_text_area_object = $('#result_txt');
+        result_text_area_object.val(convertStr(str));
+        result_text_area_object.select();
         document.execCommand("Copy");
         
-        document.getElementById('result').textContent = '=== 変換完了 ===';
+        document.getElementById('process_result').textContent = '=== 変換完了 ===';
     });
 });

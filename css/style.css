@@ -3,7 +3,7 @@ textarea {
   width: 500px;
 }
 
-#result{
+#process_result{
   color: red;
   font-weight: bold;
 }
