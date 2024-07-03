@@ -9,16 +9,27 @@
 
 <link rel="stylesheet" href="./css/style.css" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-    チャパレいれてね<br>
-    <textarea id="input_txt"></textarea>
-    <textarea readonly id="result_txt"></textarea><br>
+    <div class="main">
+        <h1>TRPG_ChatPallet_Converter</h1>
+        <div class="textarea-wrapper">
+            <div class="textarea-element"><textarea placeholder="paste ChatPallet" id="input_txt"></textarea></div>
+            <div class="textarea-element"><textarea placeholder="print converted text here" readonly id="result_txt"></textarea></div>
+        </div>
 
-    <button id="convert_button">CONVERT</button><a id="process_result"></a>
+        <div class="button-wrapper">
+            <a id="process_result"></a><button id="convert_button">CONVERT</button>
+        </div>
+    </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="./js/index.js"></script>
+
 </body>
 </html>
