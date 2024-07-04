@@ -67,13 +67,29 @@ const DEFAULT_GUN_TECH_VAL = {
 
 const ALL_TECH_LIST = [DEFAULT_TECH_VAL, DEFAULT_BATTLE_TECH_VAL, DEFAULT_GUN_TECH_VAL];
 
-function convertStr(str) {
-    let ret_str = str.replaceAll("CC", "1d100");
+function getRadioValue(stringRadio){
+    let checkValue = '';
+    let len = stringRadio.length;
+  
+    for (let i = 0; i < len; i++){
+      if (stringRadio.item(i).checked){
+        checkValue = stringRadio.item(i).value;
+      }
+    }
+
+    return checkValue
+}
+
+function convertStr(str, convertString) {
+    let ret_str = str;
+    ret_str = ret_str.replaceAll("CC", "1d100");
+    ret_str = ret_str.replaceAll("CCB", "1d100");
+    ret_str = ret_str.replaceAll("1d100", convertString);
 
     for (let tech_list_index in ALL_TECH_LIST) {
         for (let key in ALL_TECH_LIST[tech_list_index]) {
             if (ret_str.indexOf(key) === -1) {
-                ret_str = ret_str + `1d100<=${ALL_TECH_LIST[tech_list_index][key]} 【${key}】\n`
+                ret_str = ret_str + `${convertString}<=${ALL_TECH_LIST[tech_list_index][key]} 【${key}】\n`
             }
         }
         console.log(ALL_TECH_LIST[tech_list_index]);
@@ -81,12 +97,16 @@ function convertStr(str) {
 
     return ret_str;
 }
+
 $(function() {
     $('#convert_button').on('click', function() {
         let str =$('#input_txt').val();
-
         let result_text_area_object = $('#result_txt');
-        result_text_area_object.val(convertStr(str));
+        
+        let stringRadio = document.getElementsByName('convert_string');
+        let convertString = getRadioValue(stringRadio);
+
+        result_text_area_object.val(convertStr(str, convertString));
         result_text_area_object.select();
         document.execCommand("Copy");
         
