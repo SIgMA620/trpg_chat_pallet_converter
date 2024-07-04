@@ -5,9 +5,20 @@ div.main{
   padding: 0 50px;
 }
 
+hr {
+  height: 3px;
+	border-width: 0;
+	background-color: #FAF1E4;
+	background-image: -webkit-linear-gradient(right,
+	#FAF1E4 5px,#855454 5px);
+	background-image: linear-gradient(-90deg,
+	#FAF1E4 5px,#855454 5px);
+	background-size: 10px 10px;
+}
+
 .textarea-wrapper {
   display: flex;
-  margin: 0 10px;
+  margin: 20px 10px 0 10px;
 }
 
 .textarea-element {
